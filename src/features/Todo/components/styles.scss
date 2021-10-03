@@ -1,0 +1,17 @@
+.todoList{ 
+    list-style-type: none;
+
+    & > li{
+        padding:16px;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    & > li.finished {
+
+        color: #ccc;
+        text-decoration: line-through;
+
+    }
+}

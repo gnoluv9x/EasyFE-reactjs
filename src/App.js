@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 import { Link, NavLink } from 'react-router-dom';
 import AlbumList from './features/Album';
@@ -7,8 +7,26 @@ import Counter from './features/Counter';
 import ToDoFeatures from './features/Todo';
 import './App.css';
 import NotFound from './components/NotFound';
+import productApi from './api/productsApi';
 
 function App() {
+
+    // test call api
+    useEffect( () => {
+        const params = {
+            _limit : 5,
+        };
+
+        const fetchProductApi = async () => {
+            const productList = await productApi.getAll(params);
+            console.log( productList );
+        };
+
+        fetchProductApi();
+        
+    }, [])
+
+
     return (
         <div className="App">
             <p>Header</p>
@@ -27,6 +45,7 @@ function App() {
             <Switch>
                 <Redirect from="/home" to="/colorboxs" />
 
+                <Route path="/" component={ToDoFeatures} />
                 <Route path="/todos" component={ToDoFeatures} />
                 <Route path="/albums" component={AlbumList} />
                 <Route path="/colorboxs" component={ColorBox} />

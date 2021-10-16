@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './styles.scss';
+import './TodoList.scss';
 const classNames = require('classnames');
 
 TodoList.propTypes = {

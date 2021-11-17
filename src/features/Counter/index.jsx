@@ -1,16 +1,33 @@
-import React , { useState } from "react";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { increase , decrease} from './counterSlice'
 
-Counter.propTypes = {};
+CounterFeature.propTypes = {
+    
+};
 
-function Counter(props) {
-    const [count, setCount] = useState(0);
+function CounterFeature(props) {
+    const count = useSelector( state => state.counter );
+    const dispatch = useDispatch();
 
+    function handleIncreaseCounter(){
+        const action = increase(); //actions creator
+        console.log( action );
+        dispatch( action );
+    };
+    function handleDecreaseCounter(){
+        const action = decrease(); //actions creator
+        dispatch( action );
+    };
     return (
         <div>
-            {count}
-            <button onClick={() => setCount( x => x + 1)}>Increse</button>
+            Number Counter : {count}
+            <div>
+                <button onClick={handleIncreaseCounter}>Increase</button> 
+                <button onClick={handleDecreaseCounter}>Decrease</button>
+            </div>
         </div>
     );
 }
 
-export default Counter;
+export default CounterFeature;

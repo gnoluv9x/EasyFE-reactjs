@@ -65,7 +65,7 @@ function RegisterForm(props) {
                 .string()
                 .required('Please enter your password')
                 .min(6 , 'Please enter at least 6 characters'),
-            retypePass : yup
+            retypePassword : yup
                 .string()
                 .required('Please retype your password')
                 .oneOf([yup.ref('password')], 'Your password does not match.')
@@ -77,7 +77,7 @@ function RegisterForm(props) {
             fullName: '',
             email: '',
             password: '',
-            retypePass: '',
+            retypePassword: '',
         },
         resolver: yupResolver(schema),
     });
@@ -104,7 +104,7 @@ function RegisterForm(props) {
                 <InputField name="email" label="Email" form={form} />
 
                 <PasswordField name="password" label="Password" form={form} />
-                <PasswordField name="retypePass" label="Retype Password" form={form} />
+                <PasswordField name="retypePassword" label="Retype Password" form={form} />
 
                 <Button type="submit" className={classes.submit} fullWidth>Create an account</Button>
             </form>

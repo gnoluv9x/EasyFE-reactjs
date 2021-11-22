@@ -1,14 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import InputField from 'components/form-controls/InputField';
-import { Avatar, Button, Typography } from '@mui/material';
-import { createTheme } from '@mui/material/styles';
+import { LinearProgress } from '@material-ui/core';
 import { LockOutlined } from '@mui/icons-material';
+import { Avatar, Typography } from '@mui/material';
+import Button from '@mui/material/Button';
+import { createTheme } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles';
+import InputField from 'components/form-controls/InputField';
 import PasswordField from 'components/form-controls/PasswordField';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
 
 RegisterForm.propTypes = {
     onSubmit: PropTypes.func,
@@ -18,58 +20,58 @@ RegisterForm.defaultProps = {
     onSubmit: null,
 };
 
-const useStyles = makeStyles( () => {
-
+const useStyles = makeStyles(() => {
     const theme = createTheme();
 
-    return ({
-    root: {
-        textAlign: 'center',
-    },
+    return {
+        root: {
+            position: 'relative',
+            textAlign: 'center',
+        },
 
-    avatar: {
-        backgroundColor :  `${theme.palette.secondary.main} !important`,
-        color: "#fff !important",
-        margin: "0 auto",
-    },
+        avatar: {
+            backgroundColor: `${theme.palette.secondary.main} !important`,
+            color: '#fff !important',
+            margin: '0 auto',
+        },
 
-    title: {
-        padding: theme.spacing(2, 0 ,2 ,0)
-    },
+        title: {
+            padding: theme.spacing(2, 0, 2, 0),
+        },
 
-    submit: {
-        backgroundColor : `${theme.palette.primary.main} !important`,
-        color: `#fff !important`,
-        margin: "20px 0 0 10px !important",
-    },
-})});
+        submit: {
+            color: `#fff !important`,
+            margin: '20px 0 10px 0 !important',
+        },
+
+        linearProgress: {
+            margin: '10px',
+        },
+
+        disabledButton: {
+            backgroundColor:  'red'
+        },
+    };
+});
 
 function RegisterForm(props) {
     const classes = useStyles();
     const { onSubmit } = props;
 
-    const schema = yup
-        .object()
-        .shape({
-            fullName : yup
-                .string()
-                .required('Please enter your full name')
-                .test('should at least two words' , 'Please enter at least two words.', value => {
-                    return value.split(' ').length >= 2;
-                }),
-            email : yup
-                .string()
-                .required('Please enter your email address!')
-                .email('Please enter a valid email address!'),
-            password : yup
-                .string()
-                .required('Please enter your password')
-                .min(6 , 'Please enter at least 6 characters'),
-            retypePassword : yup
-                .string()
-                .required('Please retype your password')
-                .oneOf([yup.ref('password')], 'Your password does not match.')
-        })
+    const schema = yup.object().shape({
+        fullName: yup
+            .string()
+            .required('Please enter your full name')
+            .test('should at least two words', 'Please enter at least two words.', (value) => {
+                return value.split(' ').length >= 2;
+            }),
+        email: yup.string().required('Please enter your email address!').email('Please enter a valid email address!'),
+        password: yup.string().required('Please enter your password').min(6, 'Please enter at least 6 characters'),
+        retypePassword: yup
+            .string()
+            .required('Please retype your password')
+            .oneOf([yup.ref('password')], 'Your password does not match.'),
+    });
 
     const form = useForm({
         mode: 'onBlur',
@@ -82,22 +84,27 @@ function RegisterForm(props) {
         resolver: yupResolver(schema),
     });
 
-    function handleFormSubmit(values) {
-
+    async function handleFormSubmit(values) {
         if (onSubmit) {
-            onSubmit(values);
+            await onSubmit(values);
         }
-        form.reset();
+        
     }
+
+    const { isSubmitting } = form.formState;
 
     return (
         <div className={classes.root}>
+            {isSubmitting && <LinearProgress className={classes.linearProgress} />}
+
             <Avatar className={classes.avatar}>
-                    <LockOutlined></LockOutlined>
+                <LockOutlined></LockOutlined>
             </Avatar>
+
             <Typography className={classes.title} variant="h6" component="h2">
                 Create an account
             </Typography>
+
 
             <form onSubmit={form.handleSubmit(handleFormSubmit)}>
                 <InputField name="fullName" label="Full Name" form={form} />
@@ -106,7 +113,9 @@ function RegisterForm(props) {
                 <PasswordField name="password" label="Password" form={form} />
                 <PasswordField name="retypePassword" label="Retype Password" form={form} />
 
-                <Button type="submit" className={classes.submit} fullWidth>Create an account</Button>
+                <Button disabled={isSubmitting} type="submit" className={classes.submit} fullWidth variant="contained">
+                    Create an account
+                </Button>
             </form>
         </div>
     );

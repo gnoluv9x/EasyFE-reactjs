@@ -1,3 +1,4 @@
+import { Close } from '@mui/icons-material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,24 +16,32 @@ import { Link, NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
-      background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-      border: 0,
-      borderRadius: 3,
-      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-      color: 'white',
-      height: 48,
-      padding: '0 30px',
+        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+        border: 0,
+        borderRadius: 3,
+        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+        color: 'white',
+        height: 48,
+        padding: '0 30px',
     },
     button: {
         color: 'white',
         textDecoration: 'none',
+    },
+        
+    closeButton: {
+        position: 'absolute !important',
+        top: '10px',
+        right: '10px',
+        color: '#A9A9A9',
+        zIndex : 1,
     }
 });
 
 function HeadingComponent() {
     const classes = useStyles();
-    
-    const [open, setOpen] = useState(false)
+
+    const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -56,19 +65,21 @@ function HeadingComponent() {
                             </Link>
                         </Typography>
 
-                        <NavLink className={classes.button} to="/todos" >
-                            <Button  color="inherit">Todos</Button>
+                        <NavLink className={classes.button} to="/todos">
+                            <Button color="inherit">Todos</Button>
                         </NavLink>
 
                         <NavLink className={classes.button} to="/albums">
-                            <Button  color="inherit">Albums</Button>
+                            <Button color="inherit">Albums</Button>
                         </NavLink>
 
                         <NavLink className={classes.button} to="/counters">
-                            <Button  color="inherit">Counter</Button>
+                            <Button color="inherit">Counter</Button>
                         </NavLink>
-                        
-                        <Button color="inherit" onClick={handleClickOpen}>Register</Button>
+
+                        <Button color="inherit" onClick={handleClickOpen}>
+                            Register
+                        </Button>
                     </Toolbar>
                 </AppBar>
             </Box>
@@ -80,18 +91,16 @@ function HeadingComponent() {
                     if (reason !== 'backdropClick') {
                         handleClose(event, reason);
                     }
-                    }}
+                }}
             >
-                <DialogContent>
-                    <Register />
-                </DialogContent>
-                
-                <DialogActions>
-                    <Button onClick={handleClose}>Subscribe</Button>
-                    <Button onClick={handleClose}>Cancel</Button>
-                </DialogActions>
-            </Dialog>
+                <IconButton className={classes.closeButton}>
+                    <Close onClick={handleClose} />
+                </IconButton>
 
+                <DialogContent>
+                    <Register closeDialog={handleClose} />
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }

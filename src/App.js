@@ -1,4 +1,6 @@
+import { Button } from '@mui/material';
 import HeadingComponent from 'components/Header';
+import { useSnackbar } from 'notistack';
 import React, { useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 import productApi from './api/productsApi';
@@ -10,6 +12,7 @@ import CounterFeature from './features/Counter';
 import ToDoFeatures from './features/Todo';
 
 function App() {
+
 
     // test call api
     useEffect( () => {

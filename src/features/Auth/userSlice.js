@@ -11,7 +11,7 @@ export const register = createAsyncThunk( 'user/register',
       // return user data
       return data.user;
     }
-)
+);
 
 const userSlice = createSlice({
     name : 'user',

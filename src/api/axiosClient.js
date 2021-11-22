@@ -31,6 +31,19 @@ const axiosClient = axios.create({
         function (error) {
             // Any status codes that falls outside the range of 2xx cause this function to trigger
             // Do something with response error
+            console.log( 'Error response : ' , error.response);
+
+            const { config , status , data } = error.response;
+            if( config.url === '/auth/local/register' && status === 400 ){
+
+                const errorList = data.message || [];
+                const errorMessage = errorList.length > 0 ? errorList[0] : {};
+                const messageList = errorMessage.messages || [];
+                const messageInfo = messageList.length > 0 ? messageList[0] : {};
+
+                throw new Error(messageInfo.message);
+            }
+
             return Promise.reject(error);
         }
     );

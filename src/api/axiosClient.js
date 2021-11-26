@@ -34,7 +34,9 @@ const axiosClient = axios.create({
             console.log( 'Error response : ' , error.response);
 
             const { config , status , data } = error.response;
-            if( config.url === '/auth/local/register' && status === 400 ){
+            const LIST_URL = [ '/auth/local/register', '/auth/local' ]
+
+            if( LIST_URL.includes(config.url)  && status === 400 ){
 
                 const errorList = data.message || [];
                 const errorMessage = errorList.length > 0 ? errorList[0] : {};

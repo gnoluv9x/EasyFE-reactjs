@@ -12,7 +12,6 @@ function CounterFeature(props) {
 
     function handleIncreaseCounter(){
         const action = increase(); //actions creator
-        console.log( action );
         dispatch( action );
     };
     function handleDecreaseCounter(){

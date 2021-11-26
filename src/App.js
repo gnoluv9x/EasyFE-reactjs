@@ -1,6 +1,5 @@
-import { Button } from '@mui/material';
 import HeadingComponent from 'components/Header';
-import { useSnackbar } from 'notistack';
+import ProductFeature from 'features/Product';
 import React, { useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 import productApi from './api/productsApi';
@@ -12,22 +11,6 @@ import CounterFeature from './features/Counter';
 import ToDoFeatures from './features/Todo';
 
 function App() {
-
-
-    // test call api
-    useEffect( () => {
-        const params = {
-            _limit : 5,
-        };
-
-        const fetchProductApi = async () => {
-            const productList = await productApi.getAll(params);
-            console.log( productList );
-        };
-
-        fetchProductApi();
-        
-    }, [])
 
     return (
         <div className="App">
@@ -41,11 +24,10 @@ function App() {
                 <Route path="/todos" component={ToDoFeatures} />
                 <Route path="/colorboxs" component={ColorBox} />
                 <Route path="/counters" component={CounterFeature} />
+                <Route path="/products" component={ProductFeature} exact/>
 
                 <Route component={NotFound} />
             </Switch>
-
-            <p>Footer</p>
         </div>
     );
 }

@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import RegisterForm from '../RegisterForm';
-import { register } from '../userSlice';
-import { useDispatch } from 'react-redux';
-import { unwrapResult } from '@reduxjs/toolkit'
+import { unwrapResult } from '@reduxjs/toolkit';
 import { useSnackbar } from 'notistack';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import LoginForm from '../LoginForm';
+import { login, register } from '../userSlice';
 
-Register.propTypes = {
+Login.propTypes = {
     closeDialog : PropTypes.func,
 };
 
-function Register(props) {
+function Login(props) {
     
     const dispatch = useDispatch();
     const { enqueueSnackbar } = useSnackbar();
@@ -18,17 +18,15 @@ function Register(props) {
 
     const handleSubmit = async (values) => {
         try {
-            // api: username === email
-            values.username = values.email;
-            
             // dispatch action use Thunks
-            const action = register(values);
+            const action = login(values);
             const resultAction = await dispatch(action);
             unwrapResult(resultAction);
 
             if( closeDialog) closeDialog()
+
             // show notification
-            enqueueSnackbar('Register successfull 🥇🥋🥇' , { variant : 'success'})
+            enqueueSnackbar('Login successfull 🥇🥋🥇' , { variant : 'success'})
         } catch (error) {
             console.log('Register error : ', error);
             enqueueSnackbar(error.message , { variant : 'error'})
@@ -37,9 +35,9 @@ function Register(props) {
 
     return (
         <div>
-            <RegisterForm onSubmit={handleSubmit} />
+            <LoginForm onSubmit={handleSubmit} />
         </div>
     );
 }
 
-export default Register;
+export default Login;

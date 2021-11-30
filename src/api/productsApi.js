@@ -2,7 +2,6 @@ import axiosClient from './axiosClient';
 
 const productApi = {
     async getAll(params) {
-        console.log("getAll  ~ params", params)
         // Transform _page to _start
         const newParams = { ...params };
         newParams._start = !params._page || params._page <= 1 ? 0 
@@ -10,7 +9,6 @@ const productApi = {
         
         // Remove un-needed key
         delete newParams._page;
-        console.log("getAll  ~ newParams", newParams)
         // Fetch product list + count
         
 

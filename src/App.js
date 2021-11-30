@@ -1,8 +1,7 @@
 import HeadingComponent from 'components/Header';
 import ProductFeature from 'features/Product';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import productApi from './api/productsApi';
 import './App.css';
 import NotFound from './components/NotFound';
 import AlbumList from './features/Album';

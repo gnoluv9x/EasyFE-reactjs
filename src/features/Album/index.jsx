@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import AlbumRender from './components/AlbumList';
 
 AlbumList.propTypes = {

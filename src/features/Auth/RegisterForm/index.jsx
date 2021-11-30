@@ -1,10 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { LinearProgress } from '@material-ui/core';
-import { LockOutlined } from '@mui/icons-material';
-import { Avatar, Typography } from '@mui/material';
-import Button from '@mui/material/Button';
-import { createTheme } from '@mui/material/styles';
-import { makeStyles } from '@mui/styles';
+import { LinearProgress, makeStyles } from '@material-ui/core';
+import { LockOutlined } from '@material-ui/icons';
+import { Avatar, Button, Typography } from '@mui/material';
 import InputField from 'components/form-controls/InputField';
 import PasswordField from 'components/form-controls/PasswordField';
 import PropTypes from 'prop-types';
@@ -20,8 +17,7 @@ RegisterForm.defaultProps = {
     onSubmit: null,
 };
 
-const useStyles = makeStyles(() => {
-    const theme = createTheme();
+const useStyles = makeStyles((theme) => {
 
     return {
         root: {

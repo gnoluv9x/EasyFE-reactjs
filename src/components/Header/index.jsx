@@ -1,28 +1,17 @@
-import { createTheme } from '@material-ui/core';
-import { Close } from '@mui/icons-material';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import { Menu, MenuItem } from '@mui/material';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
-import IconButton from '@mui/material/IconButton';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import { makeStyles } from '@mui/styles';
+import { AppBar, makeStyles } from '@material-ui/core';
+import { Button, Dialog, DialogContent, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 import Login from 'features/Auth/Login';
 import Register from 'features/Auth/Register';
 import { logout } from 'features/Auth/userSlice';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import { Close } from '@material-ui/icons';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
-const theme = createTheme({
-    htmlFontSize : '10px',
-});
-const useStyles = makeStyles({
+const useStyles = makeStyles( theme => ({
     root: {
         fontSize: 20,
     },
@@ -46,7 +35,7 @@ const useStyles = makeStyles({
         cursor: 'pointer',
         color: 'inherit',
     }
-});
+}));
 
 const MODE_LIST = {
     LOGIN: 'login',

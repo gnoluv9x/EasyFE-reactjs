@@ -1,6 +1,7 @@
+
 import { Button } from "@mui/material";
-import React , { useState } from "react";
-import './ColorBox.scss'
+import React, { useState } from "react";
+import './ColorBox.scss';
 
 
 ColorBox.propTypes = {};

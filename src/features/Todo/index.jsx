@@ -1,9 +1,8 @@
 import React from 'react';
-import { useState } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
-import ListPage from './pages/ListPage';
-import DetailPage from './pages/DetailPage';
 import NotFound from '../../components/NotFound';
+import DetailPage from './pages/DetailPage';
+import ListPage from './pages/ListPage';
 
 ToDoFeatures.propTypes = {
 

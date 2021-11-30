@@ -1,9 +1,6 @@
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { FormControl, FormHelperText, OutlinedInput } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-import InputAdornment from '@mui/material/InputAdornment';
-import InputLabel from '@mui/material/InputLabel';
+import { InputLabel, OutlinedInput } from '@material-ui/core';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
+import { FormControl, FormHelperText, IconButton, InputAdornment } from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { Controller } from 'react-hook-form';

@@ -23,7 +23,7 @@ function App() {
                 <Route path="/todos" component={ToDoFeatures} />
                 <Route path="/colorboxs" component={ColorBox} />
                 <Route path="/counters" component={CounterFeature} />
-                <Route path="/products" component={ProductFeature} exact/>
+                <Route path="/products" component={ProductFeature}/>
 
                 <Route component={NotFound} />
             </Switch>

@@ -32,7 +32,6 @@ function FilterByService({ filters = {}, onChange }) {
                 [e.target.name]: !!e.target.checked,
             });
     };
-    console.log(typeof filters.isFreeShip );
 
     return (
         <Box className={classes.root}>

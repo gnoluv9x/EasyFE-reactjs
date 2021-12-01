@@ -17,35 +17,39 @@ const useStyles = makeStyles((theme) => ({
     },
 
     menu: {
-        listStyle: "none",
+        listStyle: 'none',
         margin: 0,
         padding: 0,
-    }
+    },
 }));
 
 function FilterByService({ filters = {}, onChange }) {
     const classes = useStyles();
-    
+
     const handleChange = (e) => {
-        if (onChange) onChange({
-            [e.target.name] : !!e.target.checked,
-        });
-    }
+        if (onChange)
+            onChange({
+                [e.target.name]: !!e.target.checked,
+            });
+    };
+    console.log(typeof filters.isFreeShip );
 
     return (
         <Box className={classes.root}>
             <Typography mt={1} textAlign="center" variant="subtitle2">
-                {' '}
-                DỊCH VỤ{' '}
+                DỊCH VỤ
             </Typography>
 
             <ul className={classes.menu}>
-                {[{key: 'isPromotion' , label: 'Có khuyến mãi'},{key: 'isFreeShip' , label: 'Miễn phí vận chuyển'},].map((service) => (
+                {[
+                    { key: 'isPromotion', label: 'Có khuyến mãi' },
+                    { key: 'isFreeShip', label: 'Miễn phí vận chuyển' },
+                ].map((service) => (
                     <li key={service.key}>
                         <FormControlLabel
                             control={
                                 <Checkbox
-                                    checked={Boolean(filters[service.key])}
+                                    checked={!!filters[service.key]}
                                     onChange={handleChange}
                                     name={service.key}
                                     color="primary"

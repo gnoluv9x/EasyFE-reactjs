@@ -39,9 +39,9 @@ function FilterByCategories({ onChange }) {
     const [categoryList, setCategoryList] = useState([]);
     const classes = useStyles();
 
-    const handleCategoriesChange = (category ) => {
+    const handleCategoriesChange = (categoryId ) => {
         if (onChange) {
-            onChange(category);
+            onChange(categoryId);
         }
     };
 
@@ -66,7 +66,7 @@ function FilterByCategories({ onChange }) {
             <Typography variant="subtitle2" className={classes.heading}>DANH MỤC SẢN PHẨM</Typography>
             <ul className={classes.menu}>
                 {categoryList.map((category) => (
-                    <li key={category.id} onClick={() => handleCategoriesChange(category)}>
+                    <li key={category.id} onClick={() => handleCategoriesChange(category.id)}>
                         <Typography variant="body2">{category.name}</Typography>
                     </li>
                 ))}

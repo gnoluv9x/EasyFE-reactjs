@@ -2,6 +2,7 @@ import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import React from 'react';
 import { useRouteMatch } from 'react-router';
+import AddToCartForm from '../components/AddToCartForm';
 import ProductInfo from '../components/ProductInfo';
 import ProductThumbnail from '../components/ProductThumbnail';
 import useFetchProductData from '../hooks/useFetchProductData';
@@ -44,6 +45,10 @@ function ProductDetailPage() {
                 </Container>
             </Box>
         );
+    };
+
+    const handleAddToCartFormSubmit = (formValues) => {
+        console.log('formValues: ', formValues);
     }
 
     return (
@@ -56,9 +61,12 @@ function ProductDetailPage() {
                         </Grid>
                         <Grid item className={classes.right}>
                             <ProductInfo product={product}/>
+                            <AddToCartForm onSubmit={handleAddToCartFormSubmit} />
                         </Grid>
                     </Grid>
                 </Paper>
+
+                
             </Container>
         </Box>
     );

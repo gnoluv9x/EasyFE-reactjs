@@ -9,9 +9,6 @@ ProductInfo.propTypes = {
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        // '& .MuiTypography-body2': {
-        //     margin: theme.spacing(2, 0),
-        // },
         borderBottom: `1px solid ${theme.palette.grey[200]}`,
         paddingBottom: theme.spacing(2),
     },

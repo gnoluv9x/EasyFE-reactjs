@@ -33,7 +33,7 @@ function FilterByService({ filters = {}, onChange }) {
 
     return (
         <Box className={classes.root}>
-            <Typography mt={1} variant="subtitle2">
+            <Typography style={{ textAlign: 'center'}} variant="subtitle2">
                 DỊCH VỤ
             </Typography>
 

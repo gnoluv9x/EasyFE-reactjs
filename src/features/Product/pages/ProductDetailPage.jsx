@@ -4,6 +4,7 @@ import React from 'react';
 import { useRouteMatch } from 'react-router';
 import AddToCartForm from '../components/AddToCartForm';
 import ProductInfo from '../components/ProductInfo';
+import ProductMenu from '../components/ProductMenu';
 import ProductThumbnail from '../components/ProductThumbnail';
 import useFetchProductData from '../hooks/useFetchProductData';
 
@@ -49,7 +50,7 @@ function ProductDetailPage() {
 
     const handleAddToCartFormSubmit = (formValues) => {
         console.log('formValues: ', formValues);
-    }
+    };
 
     return (
         <Box className={classes.root}>
@@ -66,7 +67,7 @@ function ProductDetailPage() {
                     </Grid>
                 </Paper>
 
-                
+                <ProductMenu />
             </Container>
         </Box>
     );

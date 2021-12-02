@@ -49,7 +49,7 @@ function FilterByPrice({ onChange }) {
 
     return (
         <Box className={classes.root}>
-            <Typography mt={1} variant="subtitle2" > KHOẢNG GIÁ </Typography>
+            <Typography variant="subtitle2" style={{ textAlign: 'center'}}> KHOẢNG GIÁ </Typography>
 
             <Box className={classes.range}>
                 <TextField variant="standard" name="salePrice_gte" value={values.salePrice_gte} onChange={handleChangePrice}/>

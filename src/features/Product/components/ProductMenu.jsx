@@ -39,7 +39,7 @@ function ProductMenu() {
     return (
         <Box className={classes.root} component="ul">
             <li >
-                <Link component={NavLink} to={url} exact>Details</Link>
+                <Link component={NavLink} to={url} exact>Descriptions</Link>
             </li>
             <li>
                 <Link component={NavLink} to={`${url}/additional`} exact>Additional Info</Link>

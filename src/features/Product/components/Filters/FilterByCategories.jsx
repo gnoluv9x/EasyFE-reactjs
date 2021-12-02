@@ -12,8 +12,8 @@ const useStyles = makeStyles( theme => ({
     root: {
     },
     heading: {
-        marginTop : "10px",
         textAlign : "center",
+        padding: theme.spacing(1.5),
     },
 
     menu: {

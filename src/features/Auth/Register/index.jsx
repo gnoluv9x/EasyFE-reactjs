@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import RegisterForm from '../RegisterForm';
 import { register } from '../userSlice';
 import { useDispatch } from 'react-redux';
-import { unwrapResult } from '@reduxjs/toolkit'
+import { unwrapResult } from '@reduxjs/toolkit';
 import { useSnackbar } from 'notistack';
 
 Register.propTypes = {

@@ -16,46 +16,45 @@ LoginForm.defaultProps = {
     onSubmit: null,
 };
 
-const useStyles = makeStyles((theme) => {
+const useStyles = makeStyles(theme => ({
+    root: {
+        position: 'relative',
+        textAlign: 'center',
+        height: 'auto',
+    },
 
-    return {
-        root: {
-            position: 'relative',
-            textAlign: 'center',
-            height: 'auto',
-        },
+    avatar: {
+        backgroundColor: theme.palette.secondary.main,
+        color: '#fff',
+        margin: '0 auto',
+    },
 
-        avatar: {
-            backgroundColor: `${theme.palette.secondary.main} !important`,
-            color: '#fff !important',
-            margin: '0 auto',
-        },
+    title: {
+        padding: theme.spacing(2, 0),
+    },
 
-        title: {
-            padding: theme.spacing(2, 0, 2, 0),
-        },
+    submit: {
+        margin: theme.spacing(2, 0, 1, 0),
+    },
 
-        submit: {
-            color: `#fff !important`,
-            margin: '20px 0 10px 0 !important',
-        },
+    linearProgress: {
+        margin: theme.spacing(1),
+    },
 
-        linearProgress: {
-            margin: '10px',
-        },
-
-        disabledButton: {
-            backgroundColor:  'red'
-        },
-    };
-});
+    disabledButton: {
+        backgroundColor: 'red',
+    },
+}));
 
 function LoginForm(props) {
     const classes = useStyles();
     const { onSubmit } = props;
 
     const schema = yup.object().shape({
-        identifier: yup.string().required('Please enter your email address!').email('Please enter a valid email address!'),
+        identifier: yup
+            .string()
+            .required('Please enter your email address!')
+            .email('Please enter a valid email address!'),
         password: yup.string().required('Please enter your password'),
     });
 
@@ -72,7 +71,6 @@ function LoginForm(props) {
         if (onSubmit) {
             await onSubmit(values);
         }
-        
     }
 
     const { isSubmitting } = form.formState;
@@ -94,7 +92,7 @@ function LoginForm(props) {
 
                 <PasswordField name="password" label="Password" form={form} />
 
-                <Button disabled={isSubmitting} type="submit" className={classes.submit} fullWidth variant="contained">
+                <Button className={classes.submit} disabled={isSubmitting} type="submit" color="primary" fullWidth variant="contained">
                     Sign in
                 </Button>
             </form>

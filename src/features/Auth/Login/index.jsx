@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import LoginForm from '../LoginForm';
-import { login, register } from '../userSlice';
+import { login } from '../userSlice';
 
 Login.propTypes = {
     closeDialog : PropTypes.func,

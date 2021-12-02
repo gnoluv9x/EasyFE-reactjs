@@ -17,7 +17,7 @@ function ListProduct({ data }) {
     const history = useHistory();
 
     return (
-        <Grid container>
+        <Grid container spacing={2}>
             {data.map((product, idx) => {
                 const thumbnailURL = product.thumbnail
                     ? `${STATIC_HOST}${product.thumbnail?.url}`
@@ -28,7 +28,7 @@ function ListProduct({ data }) {
                 };
 
                 return (
-                    <Grid item key={idx} xs={12} sm={6} md={4} lg={3} padding={1}>
+                    <Grid item key={idx} xs={12} sm={6} md={4} lg={3}>
                         <Box style={{cursor: "pointer"}} onClick={handleClickThumbnail}>
                             <img src={thumbnailURL} alt={product.name} width="100%" />
                         </Box>

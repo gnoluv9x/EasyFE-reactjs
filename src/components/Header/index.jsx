@@ -1,4 +1,16 @@
-import { AppBar, Box, Button, Dialog, DialogContent, IconButton, makeStyles, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core';
+import {
+    AppBar,
+    Box,
+    Button,
+    Dialog,
+    DialogContent,
+    IconButton,
+    makeStyles,
+    Menu,
+    MenuItem,
+    Toolbar,
+    Typography,
+} from '@material-ui/core';
 import { Close } from '@material-ui/icons';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import GitHubIcon from '@material-ui/icons/GitHub';
@@ -9,30 +21,29 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 
-const useStyles = makeStyles( theme => ({
-    root: {
-        fontSize: 20,
-    },
+const useStyles = makeStyles(theme => ({
+    root: {},
     button: {
         color: 'white',
         textDecoration: 'none',
-        fontSize: 'inherit',
     },
-
+    icon: {
+        marginRight: theme.spacing(2),
+    },
+    homepage: {
+        flexGrow: '1',
+    },
     closeButton: {
         position: 'absolute !important',
-        top: '10px',
-        right: '10px',
+        top: theme.spacing(1),
+        right: theme.spacing(1),
         color: '#A9A9A9',
         zIndex: 1,
-        fontSize: 'inherit',
     },
-
     accountIcon: {
-        margin: theme.spacing(0 ,1, 0, 1),
+        margin: theme.spacing(0, 1),
         cursor: 'pointer',
-        color: 'inherit',
-    }
+    },
 }));
 
 const MODE_LIST = {
@@ -42,7 +53,7 @@ const MODE_LIST = {
 
 function HeadingComponent() {
     const dispatch = useDispatch();
-    const loginedUser = useSelector((state) => state.user.current);
+    const loginedUser = useSelector(state => state.user.current);
     const isLogined = !!loginedUser.id;
 
     const classes = useStyles();
@@ -59,7 +70,7 @@ function HeadingComponent() {
         setOpen(false);
     };
 
-    const handleUserClick = (e) => {
+    const handleUserClick = e => {
         setAnchorEl(e.currentTarget);
     };
 
@@ -69,19 +80,26 @@ function HeadingComponent() {
 
     const handleLogoutClick = () => {
         const action = logout();
-        dispatch( action );
+        dispatch(action);
     };
 
     return (
         <div>
-            <Box >
-                <AppBar className={classes.root} position="static">
+            <Box>
+                <AppBar position="static">
                     <Toolbar>
-                        <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+                        <IconButton
+                            className={classes.icon}
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="menu"
+                            marginRight={2}
+                        >
                             <GitHubIcon />
                         </IconButton>
 
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        <Typography className={classes.homepage} variant="h6" component="div">
                             <Link className={classes.button} to="/">
                                 HomePage
                             </Link>
@@ -114,6 +132,7 @@ function HeadingComponent() {
                             anchorEl={anchorEl}
                             open={Boolean(anchorEl)}
                             onClose={handleCloseMenu}
+                            getContentAnchorEl={null}
                             anchorOrigin={{
                                 vertical: 'bottom',
                                 horizontal: 'left',

@@ -19,7 +19,6 @@ function InputField({ name, form, label, disabled }) {
         <Controller
             name={name}
             control={form.control}
-            as={TextField}
             render={({ onChange, onBlur, value, name }) => (
                 <TextField
                     fullWidth={true}

@@ -10,8 +10,10 @@ import ProductFilters from '../components/ProductFilters';
 import ProductSkeleton from '../components/ProductSkeleton';
 import ProductSort from '../components/ProductSort';
 
-const useStyles = makeStyles((theme) => ({
-    root: {},
+const useStyles = makeStyles(theme => ({
+    root: {
+        padding: theme.spacing(1),
+    },
     left: {
         width: '250px',
     },
@@ -22,8 +24,8 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
-        marginTop: '20px',
-        paddingBottom: '20px',
+        marginTop: theme.spacing(2),
+        paddingBottom: theme.spacing(2),
     },
 }));
 
@@ -74,7 +76,7 @@ function ListProductPage(props) {
     }, [filters]);
 
     const handleChangePage = (e, page) => {
-        setFilters((prevFilters) => {
+        setFilters(prevFilters => {
             return {
                 ...prevFilters,
                 _page: page,
@@ -91,8 +93,8 @@ function ListProductPage(props) {
         // });
     };
 
-    const handleChangeSortValue = (newSortValue) => {
-        setFilters((prevFilters) => {
+    const handleChangeSortValue = newSortValue => {
+        setFilters(prevFilters => {
             return {
                 ...prevFilters,
                 _sort: newSortValue,
@@ -109,7 +111,7 @@ function ListProductPage(props) {
         // });
     };
 
-    const handleFilterChange = (newFilters) => {
+    const handleFilterChange = newFilters => {
         setFilters({
             ...filters,
             ...newFilters,
@@ -125,20 +127,19 @@ function ListProductPage(props) {
         // });
     };
 
-    const handleChangeFilterView = (newFilters) => {
-        setFilters(newFilters)
+    const handleChangeFilterView = newFilters => {
+        setFilters(newFilters);
 
         // history.push({
         //     pathname: history.location.pathname,
         //     search: queryString.stringify(newFilters),
         // });
-
     };
 
     return (
         <Box>
             <Container spacing={1}>
-                <Grid container>
+                <Grid container classes={classes.root}>
                     <Grid item className={classes.left}>
                         <Paper elevation={0}>
                             <ProductFilters onChange={handleFilterChange} filters={filters} />

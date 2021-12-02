@@ -4,6 +4,7 @@ import { STATIC_HOST, THUMBNAIL_PLACEHOLDER } from 'constants/index';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useHistory } from 'react-router';
+import { currencyFormater } from 'utils';
 
 ListProduct.propTypes = {
     data: PropTypes.array,
@@ -35,9 +36,7 @@ function ListProduct({ data }) {
                         <Typography>{product.name}</Typography>
                         <Typography>
                             <Box component="strong" fontSize="20px" mr={1}>
-                                {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
-                                    product.salePrice
-                                )}
+                                {currencyFormater(product.salePrice)}
                             </Box>
                             {product.promotionPercent > 0 ? ` -${product.promotionPercent}%` : ''}
                         </Typography>

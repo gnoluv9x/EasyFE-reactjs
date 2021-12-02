@@ -1,5 +1,4 @@
-import { Grid, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, Grid, Typography } from '@material-ui/core';
 import { STATIC_HOST, THUMBNAIL_PLACEHOLDER } from 'constants/index';
 import PropTypes from 'prop-types';
 import React from 'react';

@@ -1,6 +1,5 @@
-import { makeStyles, Paper } from '@material-ui/core';
-import { Container, Grid, Skeleton } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
+import { Skeleton } from '@material-ui/lab';
 import React from 'react';
 import { useRouteMatch } from 'react-router';
 import ProductInfo from '../components/ProductInfo';

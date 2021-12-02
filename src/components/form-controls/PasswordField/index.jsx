@@ -1,6 +1,5 @@
-import { InputLabel, OutlinedInput } from '@material-ui/core';
+import { FormControl, FormHelperText, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-import { FormControl, FormHelperText, IconButton, InputAdornment } from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { Controller } from 'react-hook-form';

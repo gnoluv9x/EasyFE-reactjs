@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FilterByCategories from './Filters/FilterByCategories';
-import { Box } from '@mui/system';
 import FilterByPrice from './Filters/FilterByPrice';
 import FilterByService from './Filters/FilterByService';
+import { Box } from '@material-ui/core';
 
 ProductFilters.propTypes = {
     onChange: PropTypes.func,

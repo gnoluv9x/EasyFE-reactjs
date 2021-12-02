@@ -1,15 +1,13 @@
-import { AppBar, makeStyles } from '@material-ui/core';
-import { Button, Dialog, DialogContent, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { AppBar, Box, Button, Dialog, DialogContent, IconButton, makeStyles, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core';
+import { Close } from '@material-ui/icons';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import GitHubIcon from '@material-ui/icons/GitHub';
 import Login from 'features/Auth/Login';
 import Register from 'features/Auth/Register';
 import { logout } from 'features/Auth/userSlice';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import { Close } from '@material-ui/icons';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 const useStyles = makeStyles( theme => ({
     root: {

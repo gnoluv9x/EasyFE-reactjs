@@ -1,8 +1,6 @@
-import { makeStyles } from '@material-ui/core';
-import { Button, Checkbox, FormControlLabel, TextField, Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import React, { useState } from 'react';
+import { Box, Checkbox, FormControlLabel, makeStyles, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 FilterByService.propTypes = {
     filters: PropTypes.object,

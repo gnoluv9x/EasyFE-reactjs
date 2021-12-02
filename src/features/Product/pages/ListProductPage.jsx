@@ -1,10 +1,9 @@
-import { makeStyles } from '@material-ui/core';
-import { Container, Grid, Pagination, Paper } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
+import { Pagination } from '@material-ui/lab';
 import productApi from 'api/productsApi';
-import React, { useEffect, useMemo, useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import FilterViewer from '../components/FilterViewer';
 import ListProduct from '../components/ListProduct';
 import ProductFilters from '../components/ProductFilters';

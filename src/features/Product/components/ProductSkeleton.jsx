@@ -1,4 +1,5 @@
-import { Grid, Skeleton } from '@mui/material';
+import { Grid } from '@material-ui/core';
+import { Skeleton } from '@material-ui/lab';
 import PropTypes from 'prop-types';
 import React from 'react';
 

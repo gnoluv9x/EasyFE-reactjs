@@ -1,9 +1,7 @@
-import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
-import { Box } from '@mui/system';
-import { makeStyles } from '@material-ui/core';
-import { Chip } from '@mui/material';
+import { Box, Chip, makeStyles } from '@material-ui/core';
 import { currencyFormater } from 'constants/index';
+import PropTypes from 'prop-types';
+import React, { useMemo } from 'react';
 
 FilterViewer.propTypes = {
     filters: PropTypes.object,

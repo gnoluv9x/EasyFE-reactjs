@@ -44,6 +44,9 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(0, 1),
         cursor: 'pointer',
     },
+    toggleBtn: {
+        textAlign: 'center',
+    },
 }));
 
 const MODE_LIST = {
@@ -90,11 +93,10 @@ function HeadingComponent() {
                     <Toolbar>
                         <IconButton
                             className={classes.icon}
-                            size="large"
+                            size="medium"
                             edge="start"
                             color="inherit"
                             aria-label="menu"
-                            marginRight={2}
                         >
                             <GitHubIcon />
                         </IconButton>
@@ -167,7 +169,7 @@ function HeadingComponent() {
                         <>
                             <Register closeDialog={handleClose} />
 
-                            <Box textAlign="center">
+                            <Box className={classes.toggleBtn}>
                                 <Button onClick={() => setMode(MODE_LIST.LOGIN)} color="primary">
                                     Already has an account. Login here
                                 </Button>
@@ -178,8 +180,8 @@ function HeadingComponent() {
                         <>
                             <Login closeDialog={handleClose} />
 
-                            <Box textAlign="center">
-                                <Button onClick={() => setMode(MODE_LIST.REGISTER)} color="primary">
+                            <Box className={classes.toggleBtn}>
+                                <Button  onClick={() => setMode(MODE_LIST.REGISTER)} color="primary">
                                     Dont has an account. Register here!!!
                                 </Button>
                             </Box>

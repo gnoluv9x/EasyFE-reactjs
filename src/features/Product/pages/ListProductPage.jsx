@@ -139,7 +139,7 @@ function ListProductPage(props) {
     return (
         <Box>
             <Container spacing={1}>
-                <Grid container classes={classes.root}>
+                <Grid container className={classes.root}>
                     <Grid item className={classes.left}>
                         <Paper elevation={0}>
                             <ProductFilters onChange={handleFilterChange} filters={filters} />

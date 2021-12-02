@@ -34,10 +34,10 @@ function ProductDetailPage() {
                     <Paper elevation={0}>
                         <Grid container>
                             <Grid item className={classes.left}>
-                                <Skeleton variant="rectangular" height="400px"/>
+                                <Skeleton variant="rect" height="400px"/>
                             </Grid>
                             <Grid item className={classes.right}>
-                            <Skeleton variant="rectangular" height="400px"/>
+                            <Skeleton variant="rect" height="400px"/>
                             </Grid>
                         </Grid>
                     </Paper>

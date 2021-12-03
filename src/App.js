@@ -1,4 +1,5 @@
 import HeadingComponent from 'components/Header';
+import CartFeature from 'features/Cart';
 import ProductFeature from 'features/Product';
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/colorboxs" component={ColorBox} />
                 <Route path="/counters" component={CounterFeature} />
                 <Route path="/products" component={ProductFeature}/>
+                <Route path="/cart" component={CartFeature}/>
 
                 <Route component={NotFound} />
             </Switch>

@@ -1,16 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-Cart.propTypes = {
+CartFeature.propTypes = {
     
 };
 
-function Cart(props) {
+function CartFeature(props) {
     return (
         <div>
-            
+            Cart Feature
         </div>
     );
 }
 
-export default Cart;
+export default CartFeature;

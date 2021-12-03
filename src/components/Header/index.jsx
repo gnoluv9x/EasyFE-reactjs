@@ -21,7 +21,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     root: {},
     button: {
         color: 'white',
@@ -56,7 +56,7 @@ const MODE_LIST = {
 
 function HeadingComponent() {
     const dispatch = useDispatch();
-    const loginedUser = useSelector(state => state.user.current);
+    const loginedUser = useSelector((state) => state.user.current);
     const isLogined = !!loginedUser.id;
 
     const classes = useStyles();
@@ -73,7 +73,7 @@ function HeadingComponent() {
         setOpen(false);
     };
 
-    const handleUserClick = e => {
+    const handleUserClick = (e) => {
         setAnchorEl(e.currentTarget);
     };
 
@@ -181,7 +181,7 @@ function HeadingComponent() {
                             <Login closeDialog={handleClose} />
 
                             <Box className={classes.toggleBtn}>
-                                <Button  onClick={() => setMode(MODE_LIST.REGISTER)} color="primary">
+                                <Button onClick={() => setMode(MODE_LIST.REGISTER)} color="primary">
                                     Dont has an account. Register here!!!
                                 </Button>
                             </Box>

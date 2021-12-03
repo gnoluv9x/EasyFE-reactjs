@@ -43,7 +43,7 @@ function QuantityField({ name, form, label }) {
                 render={({ onChange, onBlur, name, value }) => (
                     <Box className={classes.formField}>
                         <IconButton className={classes.button}
-                            onClick={() => setValue(name, Number.parseInt(value) ? Number.parseInt(value) - 1 : 1)}
+                            onClick={() => setValue(name, !!Number.parseInt(value) ? Number.parseInt(value) - 1 : 1)}
                         >
                             <RemoveIcon />
                         </IconButton>
@@ -51,7 +51,7 @@ function QuantityField({ name, form, label }) {
                         <OutlinedInput value={value} id={name} onChange={onChange} onBlur={onBlur} />
 
                         <IconButton className={classes.button}
-                            onClick={() => setValue(name, Number.parseInt(value) ? Number.parseInt(value) + 1 : 1)}
+                            onClick={() => setValue(name, !!Number.parseInt(value) ? Number.parseInt(value) + 1 : 1)}
                         >
                             <AddIcon />
                         </IconButton>

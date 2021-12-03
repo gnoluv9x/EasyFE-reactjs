@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DOMPurify from 'dompurify';
+import { Paper } from '@material-ui/core';
 
 ProductDescriptional.propTypes = {
     product : PropTypes.object,
 };
 
 function ProductDescriptional({ product = {} }) {
-    console.log( product );
+    const safeDescription = DOMPurify.sanitize( product.description)
     return (
-        <div>
-            {product.description}
-        </div>
+        <Paper elevation={0} style={{padding: '10px'}}>
+            <div dangerouslySetInnerHTML={{ __html : safeDescription}} />
+        </Paper>
     );
 }
 

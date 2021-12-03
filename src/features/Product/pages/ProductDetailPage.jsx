@@ -1,4 +1,4 @@
-import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
+import { Box, Container, Grid, LinearProgress, makeStyles, Paper } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
@@ -22,6 +22,13 @@ const useStyles = makeStyles((theme) => ({
         flex: '1 1 0',
         padding: theme.spacing(1),
     },
+
+    linearProgress: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+    },
 }));
 
 function ProductDetailPage() {
@@ -37,6 +44,7 @@ function ProductDetailPage() {
         return (
             <Box className={classes.root}>
                 <Container>
+                    <LinearProgress className={classes.linearProgress} />
                     <Paper elevation={0}>
                         <Grid container>
                             <Grid item className={classes.left}>
@@ -77,12 +85,8 @@ function ProductDetailPage() {
                     <Route path={url} exact >
                         <ProductDescriptional product={product}/>
                     </Route>
-                    <Route path={`${url}/additional`} exact >
-                        <ProductAddtional product={product}/>
-                    </Route>
-                    <Route path={`${url}/reviews`} exact >
-                        <ProductReviews product={product}/>
-                    </Route>
+                    <Route path={`${url}/additional`} component={ProductAddtional} />
+                    <Route path={`${url}/reviews`} component={ProductReviews} />
                 </Switch>
                 
             </Container>

@@ -46,9 +46,9 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function LoginForm(props) {
+function LoginForm({ onSubmit }) {
+    
     const classes = useStyles();
-    const { onSubmit } = props;
 
     const schema = yup.object().shape({
         identifier: yup

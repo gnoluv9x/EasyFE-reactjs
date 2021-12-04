@@ -30,7 +30,7 @@ const useStyles = makeStyles( theme => ({
 function QuantityField({ name, form, label }) {
     const { errors, setValue } = form;
     const hasError = !!errors[name];
-
+    
     const classes = useStyles();
 
     return (
@@ -40,9 +40,9 @@ function QuantityField({ name, form, label }) {
             <Controller
                 name={name}
                 control={form.control}
-                render={({ onChange, onBlur, name, value }) => (
+                render={({ onChange, onBlur, name , value={value} }) => (
                     <Box className={classes.formField}>
-                        <IconButton className={classes.button}
+                        <IconButton className={classes.button} type="submit"
                             onClick={() => setValue(name, !!Number.parseInt(value) ? Number.parseInt(value) - 1 : 1)}
                         >
                             <RemoveIcon />
@@ -50,7 +50,7 @@ function QuantityField({ name, form, label }) {
 
                         <OutlinedInput value={value} id={name} onChange={onChange} onBlur={onBlur} />
 
-                        <IconButton className={classes.button}
+                        <IconButton className={classes.button} type="submit"
                             onClick={() => setValue(name, !!Number.parseInt(value) ? Number.parseInt(value) + 1 : 1)}
                         >
                             <AddIcon />

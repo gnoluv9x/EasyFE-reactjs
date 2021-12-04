@@ -1,5 +1,6 @@
 import {
     AppBar,
+    Badge,
     Box,
     Button,
     Dialog,
@@ -11,15 +12,16 @@ import {
     Toolbar,
     Typography,
 } from '@material-ui/core';
-import { Close } from '@material-ui/icons';
+import { Close, ShoppingCart } from '@material-ui/icons';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import Login from 'features/Auth/Login';
 import Register from 'features/Auth/Register';
 import { logout } from 'features/Auth/userSlice';
+import { cartItemsQuantity } from 'features/Cart/cartSelectors';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {},
@@ -57,7 +59,9 @@ const MODE_LIST = {
 function HeadingComponent() {
     const dispatch = useDispatch();
     const loginedUser = useSelector((state) => state.user.current);
+    const cartItemsCount = useSelector(cartItemsQuantity)
     const isLogined = !!loginedUser.id;
+    const history = useHistory();
 
     const classes = useStyles();
 
@@ -85,6 +89,10 @@ function HeadingComponent() {
         const action = logout();
         dispatch(action);
     };
+
+    const handleClickShoppingCart = () => {
+        history.push('/cart')
+    }
 
     return (
         <div>
@@ -130,6 +138,11 @@ function HeadingComponent() {
                         )}
                         {isLogined && <AccountCircleIcon className={classes.accountIcon} onClick={handleUserClick} />}
 
+                        <IconButton color="inherit" onClick={handleClickShoppingCart}>
+                            <Badge badgeContent={cartItemsCount} color="secondary">
+                                <ShoppingCart />
+                            </Badge>
+                        </IconButton>
                         <Menu
                             anchorEl={anchorEl}
                             open={Boolean(anchorEl)}

@@ -31,7 +31,8 @@ function AddToCartForm({ onSubmit = null }) {
         if (onSubmit) {
             await onSubmit(values);
         }
-    }
+    };
+    
     return (
         <form onSubmit={form.handleSubmit(handleFormSubmit)}>
             <QuantityField name="quantity" label="Quantity" form={form} />

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Controller } from 'react-hook-form';
 
-QuantityField.propTypes = {
+QuantityFieldSubmit.propTypes = {
     name: PropTypes.string.isRequired,
     form: PropTypes.object.isRequired,
 
@@ -17,17 +17,21 @@ const useStyles = makeStyles( theme => ({
     root: {},
     formField: {
         marginTop : theme.spacing(1),
-        width : "180px",
+        width : "100%",
         display: 'flex',
         flexFlow : 'row nowrap',
         alignItems: 'center',
+
+        "& input" : {
+            width: '20px',
+        },
     },
     button: {
         color: '#000',
     },
 }))
 
-function QuantityField({ name, form, label }) {
+function QuantityFieldSubmit({ name, form, label }) {
     const { errors, setValue } = form;
     const hasError = !!errors[name];
     
@@ -35,22 +39,20 @@ function QuantityField({ name, form, label }) {
 
     return (
         <FormControl error={hasError} margin="normal" size="small" fullWidth variant="outlined">
-            <Typography>{label}</Typography>
-
             <Controller
                 name={name}
                 control={form.control}
-                render={({ onChange, onBlur, name , value }) => (
+                render={({ onChange, onBlur, name , value}) => (
                     <Box className={classes.formField}>
-                        <IconButton className={classes.button}
+                        <IconButton className={classes.button} type="submit"
                             onClick={() => setValue(name, !!Number.parseInt(value) ? Number.parseInt(value) - 1 : 1)}
                         >
                             <RemoveIcon />
                         </IconButton>
 
-                        <OutlinedInput value={value} id={name} onChange={onChange} onBlur={onBlur} />
+                        <OutlinedInput  value={value} id={name} onChange={onChange} onBlur={onBlur} />
 
-                        <IconButton className={classes.button}
+                        <IconButton className={classes.button} type="submit"
                             onClick={() => setValue(name, !!Number.parseInt(value) ? Number.parseInt(value) + 1 : 1)}
                         >
                             <AddIcon />
@@ -64,4 +66,4 @@ function QuantityField({ name, form, label }) {
     );
 }
 
-export default QuantityField;
+export default QuantityFieldSubmit;

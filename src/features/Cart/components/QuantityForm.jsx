@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { makeStyles } from '@material-ui/core';
-import QuantityField from 'components/form-controls/QuantityField';
+import QuantityFieldSubmit from 'components/form-controls/QuantityFieldSubmit';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -8,6 +8,7 @@ import * as yup from 'yup';
 
 QuantityForm.propTypes = {
     quantity: PropTypes.number.isRequired,
+    productid: PropTypes.number.isRequired,
     onChangeQuantity: PropTypes.func,
 };
 
@@ -21,9 +22,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function QuantityForm({ quantity = 1, onChangeQuantity = null }) {
+function QuantityForm({ quantity = 1, onChangeQuantity = null, productid = 1 }) {
     const classes = useStyles();
-    console.log(' quantity from parent: ',quantity);
 
     const schema = yup.object().shape({
         quantity: yup
@@ -41,15 +41,19 @@ function QuantityForm({ quantity = 1, onChangeQuantity = null }) {
         resolver: yupResolver(schema),
     });
 
-    async function handleFormSubmit(values) {
+    async function handleFormSubmit(quantity) {
         if (onChangeQuantity) {
-            await onChangeQuantity(values);
+            const productinfo = {
+                id : productid,
+                ...quantity,
+            }
+            await onChangeQuantity(productinfo);
         }
     }
 
     return (
         <form className={classes.root} onSubmit={form.handleSubmit(handleFormSubmit)}>
-            <QuantityField name="quantity" label="Quantity" form={form}/>
+            <QuantityFieldSubmit name="quantity" label="Quantity" form={form}/>
         </form>
     );
 }

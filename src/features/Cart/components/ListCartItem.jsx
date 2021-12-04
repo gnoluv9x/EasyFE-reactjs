@@ -7,6 +7,8 @@ import { STATIC_HOST } from 'constants/index';
 import { THUMBNAIL_PLACEHOLDER } from 'constants/common';
 import { currencyFormater } from 'constants/util';
 import QuantityForm from './QuantityForm';
+import { removeFromCart, setQuantity } from '../cartSlice';
+import { useDispatch } from 'react-redux';
 
 ListCartItem.propTypes = {};
 
@@ -18,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-between',
 
         padding: theme.spacing(1),
-        textAlign : 'center',
+        textAlign: 'center',
     },
     productInfo: {
         flex: '2 1 0',
@@ -27,9 +29,9 @@ const useStyles = makeStyles((theme) => ({
         flexFlow: 'row nowrap',
         alignItems: 'center',
 
-        " & > div" : {
-            flex : '1 1 0'
-        }
+        ' & > div': {
+            flex: '1 1 0',
+        },
     },
     thumbnail: {
         width: '100%',
@@ -44,18 +46,23 @@ const useStyles = makeStyles((theme) => ({
     total: {
         flex: '1 1 0',
     },
-    delete: {},
+    delete: {
+        "&:hover" : {
+            cursor: 'pointer',
+        }
+    },
 }));
 
 function ListCartItem() {
     const classes = useStyles();
+    const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.cart.cartItems);
-    console.log('Cart Items: ', cartItems);
 
     const handleChangeQuantity = (newQuantity) => {
-        console.log( 'Quantity new: ', newQuantity);
+        const action = setQuantity(newQuantity);
+        dispatch(action);
     };
-    
+
     return (
         <Box>
             {cartItems.map((productItem) => {
@@ -64,7 +71,7 @@ function ListCartItem() {
                     : `${THUMBNAIL_PLACEHOLDER}`;
 
                 return (
-                    <Paper elevation={0} key={productItem.id}>
+                    <Paper elevation={0} key={productItem.id} style={{ marginBottom : '10px'}}>
                         <Grid container className={classes.root}>
                             <Grid item className={classes.productInfo}>
                                 <Box>
@@ -85,13 +92,16 @@ function ListCartItem() {
                             </Grid>
                             <Grid item className={classes.quantity}>
                                 {/* {productItem.quantity} */}
-                                <QuantityForm quantity={productItem.quantity} onChangeQuantity={handleChangeQuantity}/>
-
+                                <QuantityForm
+                                    quantity={productItem.quantity}
+                                    productid={productItem.product.id}
+                                    onChangeQuantity={handleChangeQuantity}
+                                />
                             </Grid>
                             <Grid item className={classes.total}>
                                 {currencyFormater(productItem.product.salePrice * productItem.quantity)}
                             </Grid>
-                            <Grid item className={classes.delete}>
+                            <Grid item className={classes.delete} onClick={() => dispatch(removeFromCart(productItem.product.id))}>
                                 <DeleteIcon />
                             </Grid>
                         </Grid>

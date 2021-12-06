@@ -67,9 +67,9 @@ function LoginForm({ onSubmit }) {
         resolver: yupResolver(schema),
     });
 
-    async function handleFormSubmit(values) {
+    function handleFormSubmit(values) {
         if (onSubmit) {
-            await onSubmit(values);
+            onSubmit(values);
         }
     }
 
